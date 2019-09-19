@@ -1,4 +1,4 @@
-	#           PROJECT 1 - knitr 
+#                   PROJECT 1 - knitr 
 
 
 # Downloading of documents
@@ -19,7 +19,7 @@ actAll <- data.table::as.data.table(read.csv("activity.csv", header = TRUE, sep 
 ```
 
 
-#What is mean total number of steps taken per day?
+#   What is mean total number of steps taken per day?
 
 # 1. Calculate the total number of steps taken per day
 ```{r}
@@ -38,7 +38,7 @@ Total_Steps_perDay[, .(MEAN_STEPS = mean(steps, na.rm= TRUE), MEDIAN_STEPS = med
 
 
 
-# What is the average daily activity pattern?
+#  What is the average daily activity pattern?
 
 # 1. Make a time series plot (i.e.type="l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 ```{r}
@@ -52,7 +52,7 @@ Cincominutal[steps == max(steps)]
 ```
 
 
-####////////  Imputing missing values
+#   Imputing missing values
 
 # 1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
 ```{r}
