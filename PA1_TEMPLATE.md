@@ -117,7 +117,7 @@ allAct[grepl(pattern = "sábado|domingo", x = Day), "Type"] <- "weekend"
 allAct[, Type := as.factor(Type)]
 ```
 
-# Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
+# Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
 
 ```{r}
 allAct[is.na(steps), "steps"] <- actAll[, c(lapply(.SD, median, na.rm = TRUE)), .SDcols = c("steps")]
