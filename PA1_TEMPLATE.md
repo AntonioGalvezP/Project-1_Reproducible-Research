@@ -101,8 +101,6 @@ ggplot2::ggplot(mix_actAll, ggplot2::aes(factor(date), steps, fill = Type )) +
 
 
 ### What is the impact of imputing missing data on the estimates of the total daily number of steps?
-### Are there differences in activity patterns between weekdays and weekends? For this part the weekdays() function may be of some help here. Use the dataset with the filled-in missing values for this part.
-
 ### 1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
 
 ```{r}
