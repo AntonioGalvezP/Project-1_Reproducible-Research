@@ -1,4 +1,4 @@
-	###////////// PROJECT 1 - knitr \\\\\\\\\\\\###
+	#           PROJECT 1 - knitr 
 
 
 # Downloading of documents
@@ -19,7 +19,7 @@ actAll <- data.table::as.data.table(read.csv("activity.csv", header = TRUE, sep 
 ```
 
 
-####////////  What is mean total number of steps taken per day?
+#What is mean total number of steps taken per day?
 
 # 1. Calculate the total number of steps taken per day
 ```{r}
@@ -38,7 +38,7 @@ Total_Steps_perDay[, .(MEAN_STEPS = mean(steps, na.rm= TRUE), MEDIAN_STEPS = med
 
 
 
-####////////  What is the average daily activity pattern?
+# What is the average daily activity pattern?
 
 # 1. Make a time series plot (i.e.type="l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 ```{r}
@@ -92,7 +92,7 @@ Total_Steps__noNAs_perDayType<-Total_Steps__noNAs_perDayType[,.(date = actAll_NO
 
 mix_actAll <- rbind(Total_Steps_perDayType, Total_Steps__noNAs_perDayType)
 ```
-#[,.(date = Total_Steps_perDay[, date], TotalSteps = Total_Steps_perDay[, steps], Steps_no_NAs = actAll_NO_NA_perDay[, steps])]
+
 ```{r}
 ggplot2::ggplot(mix_actAll, ggplot2::aes(factor(date), steps, fill = Type )) + 
 	ggplot2::geom_bar(stat="identity") + 
@@ -102,19 +102,10 @@ ggplot2::ggplot(mix_actAll, ggplot2::aes(factor(date), steps, fill = Type )) +
 ```
 
 
-# What is the impact of imputing missing data on the estimates of the total daily 
-#number of steps?
+# What is the impact of imputing missing data on the estimates of the total daily number of steps?
+# Are there differences in activity patterns between weekdays and weekends? For this part the weekdays() function may be of some help here. Use the dataset with the filled-in missing values for this part.
 
-
-
-# Are there differences in activity patterns between weekdays and weekends?
-# For this part the weekdays() function may be of some help here. Use the dataset 
-# with the filled-in missing values for this part.
-
-
-
-# 1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” 
-# indicating whether a given date is a weekday or weekend day.
+# 1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
 
 ```{r}
 allAct <- data.table::as.data.table(read.csv("activity.csv", header = TRUE, sep = ","))
@@ -126,10 +117,7 @@ allAct[grepl(pattern = "sábado|domingo", x = Day), "Type"] <- "weekend"
 allAct[, Type := as.factor(Type)]
 ```
 
-# Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval
-# (x-axis) and the average number of steps taken, averaged across all weekday days or 
-# weekend days (y-axis). See the README file in the GitHub repository to see an example 
-# of what this plot should look like using simulated data.
+# Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
 
 ```{r}
 allAct[is.na(steps), "steps"] <- actAll[, c(lapply(.SD, median, na.rm = TRUE)), .SDcols = c("steps")]
