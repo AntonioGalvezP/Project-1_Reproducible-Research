@@ -62,6 +62,7 @@ actAll[,.(NUMBER_NAs = sum(is.na(steps)))]
 ### 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 ```{r}
 actAll_NO_NA <- actAll
+
 actAll_NO_NA[is.na(steps), "steps"] <- actAll_NO_NA[, c(lapply(.SD, median, na.rm = TRUE)), .SDcols = c("steps")]
 ```
 
@@ -123,4 +124,8 @@ ggplot2::ggplot(IntervalAll , ggplot2::aes(x = interval , y = steps, fill= Type,
 ggplot2::geom_line() + 
 ggplot2::labs(title = "Avg. Daily Steps by Weektype", x = "Interval", y = "No. of Steps") + 
 ggplot2::facet_wrap(~"weekday  or weekend" , ncol = 1, nrow=2)
+```
+# To html
+```{r}
+knitr::knit2html("https://raw.github.com/AntonioGalvezP/Project-1_Reproducible-Research/blob/master/PA1_template.html")
 ```
