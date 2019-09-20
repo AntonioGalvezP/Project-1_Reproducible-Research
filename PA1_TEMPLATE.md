@@ -2,7 +2,7 @@
 
 
 ## Downloading of documents
-install.packages("knitr")
+
 ```{r}
 url <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
 
@@ -27,7 +27,7 @@ Total_Steps_perDay <- actAll[, lapply(.SD, sum, na.rm = TRUE), .SDcols = c("step
 ```
 
 ### 2. Make a histogram of the total number of steps taken each day
-```{r}
+```{r scatterplot, fig.height = 4}
 barplot(Total_Steps_perDay[, steps], axisnames = TRUE, xlab = "day", ylab = "Steps", main = "Total Steps per day")
 ```
 
