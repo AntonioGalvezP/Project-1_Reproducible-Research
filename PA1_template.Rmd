@@ -54,7 +54,11 @@ actAll[,.(NUMBER_NAs = sum(is.na(steps)))]
 
 
 # 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. 
-
+``
+# To html
+```{r}
+knitr::knit2html("https://raw.github.com/AntonioGalvezP/Project-1_Reproducible-Research/blob/master/PA1_template.html")
+```
 actAll_NO_NA <- actAll
 actAll_NO_NA[is.na(steps), "steps"] <- actAll_NO_NA[, c(lapply(.SD, median, na.rm = TRUE)), .SDcols = c("steps")]
 
@@ -114,4 +118,6 @@ ggplot2::labs(title = "Avg. Daily Steps by Weektype", x = "Interval", y = "No. o
 ggplot2::facet_wrap(~"weekday  or weekend" , ncol = 1, nrow=2)
 
 
+# To html
 
+knitr::knit2html("https://raw.github.com/AntonioGalvezP/Project-1_Reproducible-Research/blob/master/PA1_template.html")
